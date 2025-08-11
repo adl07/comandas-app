@@ -129,11 +129,11 @@ export class BOModel{
 
     //Crear una orden
     static async createOrder({ input }) {
-        const { description, estadoId, comensales, tiempoPrep, jefeCocinaId } = input;
+        const { descripcion, comensales, tiempo_estimado_preparacion, jefeCocinaId } = input;
         try {
           const { data, error } = await supabase
             .from("orders")
-            .insert([{ description, estado_id: estadoId, comensales, tiempo_estimado_prep: tiempoPrep, jefe_cocina_id: jefeCocinaId }])
+            .insert([{ descripcion, comensales, tiempo_estimado_preparacion, jefe_cocina_id: jefeCocinaId }])
             .select();
           if (error) throw error;
           return data[0];
