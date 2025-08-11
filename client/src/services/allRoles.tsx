@@ -13,5 +13,5 @@ export const GetAllRoles = async()=>{
     }
 }
 
-GetAllRoles()
+
 

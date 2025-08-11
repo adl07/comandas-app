@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useCallback, useEffect, useState } from 'react'
 import './App.css'
+import { GetAllRoles } from './services/allRoles'
+import { GetAllUsers } from './services/allUsers'
+import { GetAllOrders } from './services/allOrders'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -9,30 +10,28 @@ function App() {
   const [messageDos, setMessageDos] = useState<string>('')
   const [messageTres, setMessageTres] = useState<string>('')
 
+  const getRoles = useCallback(()=>{
+    GetAllRoles()
+  },[])
+
+  const getUsers = useCallback(()=>{
+    GetAllUsers()
+  },[])
+
+  const getOrders=useCallback(()=>{
+    GetAllOrders()
+  },[])
+
   useEffect(()=>{
-    const interval = setInterval(()=>{
-      setMessage("Hola")
-    }, 5000)
-
-    const intervalDos = setInterval(()=>{
-      setMessageDos("Bienvenido")
-    }, 7000)
-
-    const intervalTres = setInterval(()=>{
-      setMessageTres('...')
-    }, 9000)
-
-    return ()=> {
-      clearInterval(interval)
-      clearInterval(intervalDos)
-      clearInterval(intervalTres)
-    }
-
+  
     
   },[])
 
   return (
     <>
+    <button onClick={getOrders}>Ordenes</button>
+    <button onClick={getRoles}>Roles</button>
+    <button onClick={getUsers}>Users</button>
       <h1>{message}</h1>
       <h2>{messageDos}</h2>
       <h2>{messageTres}</h2>

@@ -1,0 +1,6 @@
+.container-form-orders{
+    display: grid;
+    gap: 10px;
+    max-width: 350px;
+    max-height: 400px;
+}
