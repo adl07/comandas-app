@@ -7,24 +7,26 @@ export const schemaOrdenValidator = z.object({
     })
     .min(10, { message: "La descripción debe contener un mínimo de 10 caracteres" })
     .max(50, { message: "La descripción debe contener un máximo de 50 caracteres" }),
-    comensales: z.string({
+    comensales: z.coerce.number({
         invalid_type_error: "Por favor ingresa la cantidad de comensales",
-        required_error: "La cantidad de comensales debe ser texto",
+        required_error: "La cantidad de comensales debe ser un número",
     })
-    .min(1, { message: "Comensales debe tener al menos 1 carácter" })
-    .max(50, { message: "Comensales debe tener como máximo 50 caracteres" }),
-    tiempo_preparacion: z.string({
-        invalid_type_error: "Por favor ingresa el tiempo de preaparacion",
-        required_error: "El tiempo de preparación debe ser texto",
+    .int({message: "Debe ser un número entero"})
+    .min(1, { message: "Debe ser al menos 1 comensal" })
+    .max(50, { message: "Máximo 50 comensales" }),
+    tiempo_estimado_preparacion: z.coerce.number({
+        invalid_type_error: "Por favor ingresa el tiempo de preparacion",
+        required_error: "El tiempo de preparación debe ser un número",
     })
-    .min(3, { message: "Tiempo de preparación es demasiado corto" })
-    .max(5, { message: "Tiempo de preparación es demasiado largo" }),
+    .int({message:"Debe ser un número entero"})
+    .min(1, { message: "Mínimo 1 minuto" })
+    .max(300, { message: "Máximo 300 minutos" }),
     jefe_cocina: z.string({
         invalid_type_error: "Por favor ingresa el jefe de cocina",
         required_error: "El jefe de cocina debe ser texto",
     })
     .min(5, { message: "El jefe de cocina debe tener al menos 5 caracteres" })
-    .max(10, { message: "El jefe de cocina debe tener como máximo 10 caracteres" })
+    .max(50, { message: "El jefe de cocina debe tener como máximo 10 caracteres" })
 })
 
 export type SchemaOrdenValidator = z.infer<typeof schemaOrdenValidator>

@@ -27,8 +27,8 @@ const FormOrder=()=>{
     const formik = useFormik<SchemaOrdenValidator>({
         initialValues:{
             descripcion: "",
-            comensales:  "",
-            tiempo_preparacion: "",
+            comensales:  0,
+            tiempo_estimado_preparacion: 0,
             jefe_cocina: "",
         },
         validationSchema: toFormikValidationSchema(schemaOrdenValidator),
@@ -79,7 +79,7 @@ const FormOrder=()=>{
                 name="comensales"
                 type="text"
                 onChange={formik.handleChange}
-                value={formik.values.comensales}
+                value={Number(formik.values.comensales)}
                 onBlur={formik.handleBlur}
                 autoComplete="off"/>
                 <p className="">
@@ -87,16 +87,16 @@ const FormOrder=()=>{
                 </p>
                 <label>Tiempo estimado</label>
                 <input placeholder="Tiempo"
-                id="tiempo_preparacion"
-                name="tiempo_preparacion"
+                id="tiempo_estimado_preparacion"
+                name="tiempo_estimado_preparacion"
                 type="text"
                 onChange={formik.handleChange}
-                value={formik.values.tiempo_preparacion}
+                value={Number(formik.values.tiempo_estimado_preparacion)}
                 onBlur={formik.handleBlur}
                 autoComplete="off"
                 />
                 <p className="">
-                    {formik.touched.tiempo_preparacion && formik.errors.tiempo_preparacion}
+                    {formik.touched.tiempo_estimado_preparacion && formik.errors.tiempo_estimado_preparacion}
                 </p>
                 <label>Jefe de cocina</label>
                 <input placeholder="Nombre"
