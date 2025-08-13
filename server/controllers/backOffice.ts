@@ -85,17 +85,17 @@ getAllOrders = async (req, res) => {
     }
   }
 
-  createOrder = async (req, res) => {
+  createNewOrder = async (req, res) => {
     //const result = validateMovie(req.body);
 
-    const result = (req.body)
+    try {
+      const result = (req.body)
+      const newOrder = await this.backOfficeModel.createOrder(result);
 
-    if (!result.success) {
-      return res.status(400).json({ error: JSON.parse(result.error.message) });
+      res.status(201).json(newOrder);
+    } catch (error) {
+        return res.status(500).json({ error: "No se pudo crear la orden"})
     }
-    const newOrder = await this.backOfficeModel.createOrder({ input: result.data });
-
-    res.status(201).json(newOrder);
   };
 
   createUser = async (req, res) => {
@@ -104,7 +104,9 @@ getAllOrders = async (req, res) => {
     if (!result.success) {
       return res.status(400).json({ error: JSON.parse(result.error.message) });
     }
-    const newUser = await this.backOfficeModel.createUser({ input: result.data });
+    const newUser = await this.backOfficeModel.createOrder({input: result});
+
+    console.log(newUser)
 
     res.status(201).json(newUser);
   };

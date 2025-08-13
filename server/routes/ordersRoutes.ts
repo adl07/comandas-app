@@ -29,7 +29,7 @@ backOfficeRouter.get("/allUsers", backOfController.getAllUser)
 backOfficeRouter.get("/users/:id",backOfController.getUserById)
 
 //ruta para crear comanda
-backOfficeRouter.post("/order", backOfController.createOrder)
+backOfficeRouter.post("/order", backOfController.createNewOrder)
 
 //route para crear rol
 backOfficeRouter.post("/role", backOfController.createRol)

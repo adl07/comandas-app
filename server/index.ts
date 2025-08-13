@@ -20,7 +20,6 @@ export function createApp({ backOfficeModel }: { backOfficeModel: BOModel }){
 
     const PORT = process.env.PORT || 3500
 
-    //app.listen(PORT, ()=> console.log(`Llamando desde el puerto ${PORT}`))
 
     return app
 }

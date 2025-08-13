@@ -128,7 +128,7 @@ export class BOModel{
 
 
     //Crear una orden
-    static async createOrder({ input }) {
+    async createOrder(input) {
         const { descripcion, comensales, tiempo_estimado_preparacion, jefeCocinaId } = input;
         try {
           const { data, error } = await supabase
