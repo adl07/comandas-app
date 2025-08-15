@@ -21,7 +21,7 @@ export const schemaOrdenValidator = z.object({
     .int({message:"Debe ser un número entero"})
     .min(1, { message: "Mínimo 1 minuto" })
     .max(300, { message: "Máximo 300 minutos" }),
-    jefe_cocina: z.string({
+    jefe_cocina_id: z.string({
         invalid_type_error: "Por favor ingresa el jefe de cocina",
         required_error: "El jefe de cocina debe ser texto",
     })

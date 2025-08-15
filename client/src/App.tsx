@@ -18,8 +18,9 @@ function App() {
     GetAllUsers()
   },[])
 
-  const getOrders=useCallback(()=>{
-    GetAllOrders()
+  const getOrders=useCallback(async()=>{
+    const allOrdersResult = await GetAllOrders()
+    console.log(allOrdersResult)
   },[])
 
   useEffect(()=>{
