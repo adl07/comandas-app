@@ -1,0 +1,39 @@
+.container-label{
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    border-radius: 8px;
+    font-size: 10px;
+    line-height: 0.5rem;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    gap: 5px;
+}
+
+
+.stepOne{
+    background-color: #E6E6E6;
+    color: #606060;
+}
+
+.stepTwo{
+    background-color: #f3e39d;
+    color: #b07c02;
+}
+
+.stepThree{
+    background-color: #e7c97e;
+    color: #F4942F ;
+}
+
+.stepFour{
+    background-color: #BADFCD;
+    color:#397234;
+}
+
+.stepFive{
+    background-color: #A8C4EC;
+    color:#0474C4;
+}

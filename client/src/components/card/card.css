@@ -1,0 +1,48 @@
+.container-card{
+    display: grid;
+    width: 200px;
+    height: 150px;
+    color: #131213;
+    border: 0.3px solid #DAD5D0;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 1px rgba(105, 105, 105, 0.2);
+    padding: 10px;
+    background-color: #f4f1ee;
+}
+
+.title-card{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: top;
+}
+
+.title-card h3{
+    margin: 0px;
+    font-weight: normal;
+    font-size: 16px;
+    display: grid;
+    justify-content: left;
+}
+
+.icon-card{
+    display: grid;
+    justify-content: right;
+}
+
+.details-card{
+    display: grid;
+}
+
+.details-quantity{
+    display: grid;
+    align-items: end;
+    justify-content: left;
+    font-size: 26px;
+}
+
+.details-description{
+    display: grid;
+    justify-content: left;
+    font-size: 14px;
+}
+

@@ -1,0 +1,10 @@
+.contianer-grid-orders{
+    box-shadow: 2px 2px 2px 1px rgba(105, 105, 105, 0.2);
+    width:  95%;  
+    height: auto;
+    color: #242424;
+    min-height: fit-content; 
+    margin-bottom: 20px;
+}
+
+

@@ -5,7 +5,8 @@ import App from './App.tsx'
 import { store } from '../store.tsx'
 import { Provider } from 'react-redux'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import CreateOrder from './components/createOrder.tsx'
+import CreateOrder from './components/createOrder/createOrder.tsx'
+import Dashboard from '../src/pages/dashboard.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <Provider store={store}>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')!).render(
           <Route index path='/' element={<App/>}></Route>
           {/** <Route path='/orders' element={<CreateOrder/>}></Route>*/}
           <Route path='/createOrders' element={<CreateOrder/>}></Route>
+          <Route path='/dashboard' element={<Dashboard/>}></Route>
         </Routes>
         </BrowserRouter>
       

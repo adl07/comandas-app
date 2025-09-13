@@ -1,15 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from "axios";
 
 
 
-
 export const GetAllOrders= async()=>{
+
     try {
         const endpoint = 'https://comandas-app-two.vercel.app/allOrders'
         const response = await axios.get(endpoint)
-        console.log(response.data)
         return response.data
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
         console.log("Ocurrio un error al ejecutar getAllOrders", error)
         throw new Error("Ocurrio un error al ejecutar getAllOrders");

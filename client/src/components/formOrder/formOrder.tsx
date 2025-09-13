@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from "react"
 import {useFormik } from "formik"
-import { schemaOrdenValidator ,type SchemaOrdenValidator } from "../schemas/orders"
+import { schemaOrdenValidator ,type SchemaOrdenValidator } from "../../schemas/orders"
 import { toFormikValidationSchema } from "zod-formik-adapter"
 import './formOrder.css'
-import { CreateOrder } from "../services/allOrders"
-import { GetAllUsers } from "../services/allUsers"
+import { CreateOrder } from "../../services/allOrders"
+import { GetAllUsers } from "../../services/allUsers"
 
 
 const FormOrder=()=>{
