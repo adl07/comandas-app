@@ -69,7 +69,7 @@ export class BOModel{
 
     async getOrdersStates(){
         try {
-            let query = supabase.from("orders_states").select("*")
+            let query = supabase.from("order_states").select("*")
             
             const {data, error} = await query
             if(error) throw error
