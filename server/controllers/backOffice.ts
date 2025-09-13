@@ -64,6 +64,25 @@ getAllOrders = async (req, res) => {
     }
   }
 
+  getOrdesStates = async(req, res) =>{
+    try {
+      const ordStates = await this.backOfficeModel.getOrdersStates();
+      if(!ordStates){
+        return res.status(404).json({
+          error: "No se encontraron estados",
+          message: "No se encontraron estados"
+        })
+      }
+      return res.json(ordStates)
+    } catch (error: any) {
+      console.error("Error en controller getOrdesState:", error)
+        return res.status(500).json({
+          error: "Error interno",
+          message: error.message || "Error al obtener los estados"
+        })
+    }
+  }
+
   getUserById = async(req, res)=>{
     try {
       const {id} = req.params

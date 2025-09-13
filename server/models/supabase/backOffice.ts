@@ -67,7 +67,7 @@ export class BOModel{
         }
     }
 
-    async getOrdersState(){
+    async getOrdersStates(){
         try {
             let query = supabase.from("orders_states").select("*")
             

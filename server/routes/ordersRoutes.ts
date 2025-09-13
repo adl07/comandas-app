@@ -20,7 +20,7 @@ backOfficeRouter.get("/allRoles", backOfController.getAllRoles)
 backOfficeRouter.get("/allUsers", backOfController.getAllUser)
 
 //ruta para obtener todos los estados de las comandas
-//backOfficeRouter.get("/ordersState")
+backOfficeRouter.get("/ordersStates", backOfController.getOrdesStates)
 
 //ruta para obtener estado de la comanda 
 //backOfficeRouter.get("/orders/:id")
