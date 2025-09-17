@@ -14,6 +14,8 @@ function Dashboard(){
     const [cards, setCards] = useState<[]>([])
     const [loading, setLoading] = useState<boolean>(true)
 
+    const foo = 1
+
     const getData =async ()=>{
         try {
             const data = await getOrdersStates();
