@@ -10,6 +10,11 @@
     "preview": "vite preview",
     "prepare": "husky install"
   },
+  "lint-staged": { "*.{ts,tsx,js,jsx}": [
+    "eslint --fix",
+    "prettier --write"
+    ]
+  },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@reduxjs/toolkit": "^2.8.2",
