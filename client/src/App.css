@@ -31,3 +31,10 @@
   gap: 10px;
 }
 
+.contianer-loader{
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+

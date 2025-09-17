@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Card, type CardProps } from "../components/card/card"
+import { Card} from "../components/card/card"
 import { Head } from "../components/head/head"
 import '../App.css'
 import { FilterOrder } from "../components/filterOrder/filterOrder"
@@ -7,15 +7,25 @@ import { getOrdersStates } from "../services/allOrdesStates"
 import { useEffect, useState } from "react"
 import { IconDefault } from "../components/ui/icons"
 import type { Estados } from "../interfaces/orders"
+import { Loader } from "../components/ui/loader"
 
 function Dashboard(){ 
 
     const [cards, setCards] = useState<[]>([])
+    const [loading, setLoading] = useState<boolean>(true)
 
     const getData =async ()=>{
-        const data = await getOrdersStates();
-        console.log(data)
-        setCards(data)
+        try {
+            const data = await getOrdersStates();
+            console.log(data)
+            setCards(data)
+            setLoading(false)
+        } catch (error: any) {
+            console.log("Error en getData", error)
+            setLoading(true)
+            throw new Error("Error en getData", error);
+            
+        }
     }
 
     useEffect(()=>{
@@ -35,16 +45,26 @@ function Dashboard(){
         <> 
             <div className="container-dashboard">
             <Head/>
-                <div className="container-group-cards">
-                    {cards.length > 0 && cards.map((card:any)=>
-                        <Card 
-                            key={card.id}
-                            title={card.nombre}
-                            icon={<IconDefault  name={IconsVariant[card.nombre as Estados]}/>} 
-                            quantity={card.quantity}
-                            description={card.description}
-                        />
+                <div className={loading ? "contianer-loader" : "container-group-cards"}>
+                    {loading ? (
+                        <div className="contianer-loader">
+                            <Loader/>
+                        </div>
+                        
+                    ):(
+                        <>
+                            {cards.length > 0 && cards.map((card:any)=>
+                            <Card 
+                                key={card.id}
+                                title={card.nombre}
+                                icon={<IconDefault  name={IconsVariant[card.nombre as Estados]}/>} 
+                                quantity={card.quantity}
+                                description={card.description}
+                            />
                     )}
+                        </>
+                    ) }
+                    
                 </div>
             <FilterOrder/>
             </div>  

@@ -3,12 +3,14 @@ import './fillterOrder.css'
 import { GetAllOrders } from '../../services/allOrders';
 import type { OrdersInterface } from '../../interfaces/orders';
 import { GridOrder } from '../gridOrder.tsx/gridOrder';
+import { Loader } from '../ui/loader';
 
 
 export const FilterOrder =() =>{
     const [descriptionValue, setDesciptionValue] = useState<string>('')
     const [estadoValue, setEstadoValue] = useState<string>('todos');
     const [data, setData] = useState<OrdersInterface[]>([]);
+    const [loading, setLoading] = useState<boolean>(true)
 
     console.log('Valor del input:', descriptionValue)
     
@@ -18,10 +20,17 @@ export const FilterOrder =() =>{
     },[estadoValue])
 
     const getDataOrders = useCallback( async ()=>{
-        const data = await GetAllOrders();
-        console.log(data)
-        setData(data)
-        return data
+        try {
+            const data = await GetAllOrders();
+            console.log(data)
+            setData(data)
+            setLoading(false)
+            return data
+        } catch (error:any) {
+            console.log("Error en getDataOrders", error)
+            setLoading(true)
+            throw new Error("Error en getDataOrders", error);
+        }
     },[])
 
     useEffect(()=>{
@@ -61,12 +70,24 @@ export const FilterOrder =() =>{
                 </div>
             </div>
             {   
-                data && filterd.length < 1 ? 
-                ( <div className="message-estados">
-                    <p>No hay datos con este estado</p>
-                </div>
-                ) : 
-                (<GridOrder dataProps={filterd}/>)
+                loading ? (
+                    <div>
+                        <Loader/>
+                    </div>
+                    
+                ): (
+                    <>
+                        {
+                        data && filterd.length < 1 ? 
+                        (   <div className="message-estados">
+                                <p>No hay datos con este estado</p>
+                            </div>
+                        ) : 
+                        (<GridOrder dataProps={filterd}/>)
+                        }
+                </>
+                )
+                
                 
             }
         </>
