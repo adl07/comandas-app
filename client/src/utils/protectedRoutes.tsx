@@ -1,15 +1,14 @@
-import { Navigate, Outlet } from "react-router-dom"
+import { Navigate, Outlet } from "react-router-dom";
 
-interface routeProps{
-    access: boolean,
-    redirectPath: string
+interface routeProps {
+  access: boolean;
+  redirectPath: string;
 }
 
+export const ProtectedRoute = ({ access, redirectPath }: routeProps) => {
+  if (!access) {
+    return <Navigate to={redirectPath} replace />;
+  }
 
-export const ProtectedRoute =({access, redirectPath}: routeProps)=>{
-    if(!access){
-        return <Navigate to={redirectPath} replace/>
-    }
-
-    return <Outlet/>
-}
+  return <Outlet />;
+};
