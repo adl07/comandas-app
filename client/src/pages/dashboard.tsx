@@ -8,17 +8,16 @@ import { useEffect, useState } from "react";
 import { IconDefault } from "../components/ui/icons";
 import type { Estados } from "../interfaces/orders";
 import { Loader } from "../components/ui/loader";
+import { GetAllRoles } from "../services/allRoles";
+
 
 function Dashboard() {
   const [cards, setCards] = useState<[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
 
-  const foo = 1;
-
   const getData = async () => {
     try {
       const data = await getOrdersStates();
-      console.log(data);
       setCards(data);
       setLoading(false);
     } catch (error: any) {
@@ -28,8 +27,19 @@ function Dashboard() {
     }
   };
 
+  const getRoles = async () => {
+    try {
+      const response = await GetAllRoles();
+      console.log(response);
+    } catch (error) {
+      console.log("Error en getRoles", error);
+      throw new Error("Error en getRoles", error);
+    }
+  };
+
   useEffect(() => {
     getData();
+    getRoles();
   }, []);
 
   const IconsVariant: Record<Estados, React.ReactNode> = {
