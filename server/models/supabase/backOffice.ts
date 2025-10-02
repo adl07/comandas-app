@@ -81,17 +81,17 @@ export class BOModel{
         }
     }
 
-    async getUserById({id}){
+    async getUserByUsername({username}){
       try {
           const {data, error} = await supabase
           .from("users")
           .select("*")
-          .eq("id", id)
+          .eq("nombre", username)
           if(error) throw error
 
           return data
       } catch (error) {
-          console.log("No se pudo ejecutar getUser ", error)
+          console.log("No se pudo ejecutar getUserByUsername ", error)
           throw new Error ("Erro al buscar el user")
       }
   }

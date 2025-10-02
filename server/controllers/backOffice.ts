@@ -83,18 +83,18 @@ getAllOrders = async (req, res) => {
     }
   }
 
-  getUserById = async(req, res)=>{
+  getUserByUsername = async(req, res)=>{
     try {
-      const {id} = req.params
-      const dataId = await  this.backOfficeModel.getUserById({id})
-      if(!dataId){
+      const {username} = req.params
+      const dataUser = await  this.backOfficeModel.getUserByUsername({username})
+      if(!dataUser){
         return res.status(404).json({
           error: "Error interno",
           message: "No existe user con este id"
         })
       }
 
-      return res.json(dataId)
+      return res.json(dataUser)
     } catch (error:any) {
       console.error("Error en controller getUser:", error);
       return res.status(501).json({

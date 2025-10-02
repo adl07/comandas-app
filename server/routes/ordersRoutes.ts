@@ -25,8 +25,8 @@ backOfficeRouter.get("/ordersStates", backOfController.getOrdesStates)
 //ruta para obtener estado de la comanda 
 //backOfficeRouter.get("/orders/:id")
 
-//route para obtener user por id
-backOfficeRouter.get("/users/:id",backOfController.getUserById)
+//route para obtener user por 
+backOfficeRouter.get("/users/:username",backOfController.getUserByUsername)
 
 //ruta para crear comanda
 backOfficeRouter.post("/order", backOfController.createNewOrder)
