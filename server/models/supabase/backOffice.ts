@@ -85,8 +85,14 @@ export class BOModel{
       try {
           const {data, error} = await supabase
           .from("users")
-          .select("*")
+          .select(`
+            id,
+            nombre,
+            rol_id,
+            roles (functionalities)
+          `)
           .eq("nombre", username)
+          .single(); // si esperás un único usuario
           if(error) throw error
 
           return data
